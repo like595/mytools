@@ -1,3 +1,3 @@
-module github.com/like595/mytools/v1.0.1
+module github.com/like595/mytools
 
 go 1.16
