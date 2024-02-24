@@ -1,5 +1,5 @@
 package tool
 
 func Hello() string {
-    return "hello from tool project"
+    return "你好 from tool project"
 }
