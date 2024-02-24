@@ -1,5 +1,5 @@
 package tool
 
 func Hello() string {
-    return "你好 ,增加了tag from tool project"
+    return "这里的版本是V1.0.3"
 }
