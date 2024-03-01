@@ -1,4 +1,4 @@
-package service
+package vtcp
 
 import (
 	"github.com/like595/mytools/vtools"
