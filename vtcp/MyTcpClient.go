@@ -49,7 +49,7 @@ func (this *MyTcpClient)ConnectTcpServer(url string,receiveDataBackFun ReceiveDa
 /*
 停止tcp
 */
-func (this *MyTcpClient)StopTcpServer()  {
+func (this *MyTcpClient)StopTcpClient()  {
 	this.conn.Close()
 }
 
