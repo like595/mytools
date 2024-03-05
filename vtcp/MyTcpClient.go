@@ -58,14 +58,10 @@ func (this *MyTcpClient) StopTcpServer() {
 连接服务端
 */
 func (this *MyTcpClient) connectToServer() {
-	//conn, err := net.Dial("tcp", this.url)
-	fmt.Println("准备连接tcp服务", time.Now())
 	conn, err := net.DialTimeout("tcp", this.url, time.Second)
-	fmt.Println("连接tcp服务结束", time.Now())
 	if err == nil {
 		this.conn = conn
 		this.connectBack()
-		fmt.Println("连接成功***************")
 	}
 }
 
@@ -126,7 +122,7 @@ func (this *MyTcpClient) readData() {
 			continue
 			//return //终止程序
 		}
-		go this.receiveDataBackFun(buf, len)
+		go this.receiveDataBackFun(buf[:len], len)
 		time.Sleep(1e3)
 	}
 }
@@ -136,11 +132,8 @@ func (this *MyTcpClient) readData() {
 */
 func (this *MyTcpClient) reconnection() {
 	for true {
-		//time.Sleep(1e10)
-
 		time.Sleep(time.Second)
 		if this.conn == nil {
-			fmt.Println("重连", time.Now())
 			this.connectToServer()
 		}
 	}
