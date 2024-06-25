@@ -76,7 +76,7 @@ func (this *MyModbusTCP) Read(funCode int, begin int, len int) int {
 功能码：
 5：写单个线圈寄存器；
 6：写单个保持寄存器；
-15：写多个线圈寄存器；
+15：写多个线圈寄存器；未实现
 16：写多个保持寄存器；
 返回发送命令的索引
 */

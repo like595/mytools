@@ -23,15 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MyModbus/MyModbusRTU.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyModbus/MyModbusTCP.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/Config.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ModbusRTUTest.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ModbusTCPTest.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vtools/MyTools.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpClient.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyModbus/MyModbusTCP.go" beforeDir="false" afterPath="$PROJECT_DIR$/MyModbus/MyModbusTCP.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
