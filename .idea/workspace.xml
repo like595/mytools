@@ -23,14 +23,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MyModbus/MyModbusRTU.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyModbus/MyModbusTCP.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conf/Config.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ModbusRTUTest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/ModbusTCPTest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vtools/MyTools.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vtcp/MyTcpClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpClient.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+        <option value="Go Application" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" url="file://D:/Program Files/Go" />
   <component name="Git.Settings">
@@ -52,6 +66,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultGoTemplateProperty": "Go Application",
+    "Go Build.go build ModbusRTUTest.go.executor": "Run",
+    "Go Build.go build ModbusTCPTest.go.executor": "Run",
+    "Go Build.go build main.go.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -66,24 +84,60 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git"
+    "settings.editor.selected.configurable": "preferences.general"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\GoWork\mytools" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\vtcp" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\vrabbitmqhelper" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VLog" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VIniUtil" />
-      <recent name="C:\Users\Administrator\Documents\GitHub\mytools" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\GoWork\mytools\test" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VRabbitMQHelper" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VDBHelper" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VMyLog" />
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VTools" />
-      <recent name="C:\Users\Administrator\Documents\GitHub\mytools" />
     </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build ModbusTCPTest.go">
+    <configuration name="go build ModbusRTUTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="mytools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="github.com/like595/mytools" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/ModbusRTUTest.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build ModbusTCPTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="mytools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="github.com/like595/mytools" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/ModbusTCPTest.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="mytools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="github.com/like595/mytools" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build ModbusTCPTest.go" />
+        <item itemvalue="Go Build.go build ModbusRTUTest.go" />
+        <item itemvalue="Go Build.go build main.go" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

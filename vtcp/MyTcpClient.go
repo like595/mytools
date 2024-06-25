@@ -42,7 +42,9 @@ func (this *MyTcpClient) ConnectTcpServer(url string, receiveDataBackFun Receive
 	this.connectBack = connectBack
 	this.disConnectBack = disConnectBack
 	fmt.Println("启动tcp客户端", this.url)
-	this.connectToServer()
+	for !this.connectToServer() {
+		time.Sleep(time.Minute)
+	}
 	go this.readData()
 	go this.reconnection()
 }
@@ -57,12 +59,14 @@ func (this *MyTcpClient) StopTcpServer() {
 /*
 连接服务端
 */
-func (this *MyTcpClient) connectToServer() {
+func (this *MyTcpClient) connectToServer() bool {
 	conn, err := net.DialTimeout("tcp", this.url, time.Second)
 	if err == nil {
 		this.conn = conn
 		this.connectBack()
+		return true
 	}
+	return false
 }
 
 /*
