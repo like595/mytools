@@ -1,14 +1,14 @@
 package main
 
 import (
-	vModbus "github.com/like595/mytools/MyModbus"
+	vModbus "github.com/like595/mytools/vmodbus"
 	"github.com/like595/mytools/vtools"
 	"time"
 )
 
 func main() {
 
-	mymodbusRTU := vModbus.MyModbusRTU{}
+	mymodbusRTU := vModbus.VModbusRTU{}
 	mymodbusRTU.Start("192.168.204.201", 6010, 5, rreceiveDataBackClient, cconnectBackClient, ddisConnectBackClient)
 	mymodbusRTU.Read(1, 0x1234, 10)
 	mymodbusRTU.Read(3, 0x1235, 10)
