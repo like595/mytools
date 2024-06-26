@@ -62,7 +62,6 @@ func (this *VModbusRTU) Read(funCode int, begin int, len int) {
 	data = append(data, crc[0])
 	data = append(data, crc[1])
 
-	vtools.SugarLogger.Info("发送数据：", vtools.BytesToString(data))
 	this.tcpClient.WriteData(data)
 }
 
@@ -96,7 +95,6 @@ func (this *VModbusRTU) Write(funCode int, begin int, len int, sdata *[]byte) {
 	data = append(data, crc[0])
 	data = append(data, crc[1])
 
-	vtools.SugarLogger.Info("发送数据：", vtools.BytesToString(data))
 	this.tcpClient.WriteData(data)
 }
 

@@ -9,7 +9,7 @@ import (
 func main() {
 
 	mymodbusRTU := vModbus.VModbusTCP{}
-	mymodbusRTU.Start("192.168.204.201", 6010, 5, rrreceiveDataBackClient, ccconnectBackClient, dddisConnectBackClient)
+	mymodbusRTU.Start("192.168.204.201:6010", 5, rrreceiveDataBackClient, ccconnectBackClient, dddisConnectBackClient)
 	mymodbusRTU.Read(3, 0x1234, 10)
 	sdata := &[]byte{0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10}
 	mymodbusRTU.Write(16, 0x1234, len((*sdata)), sdata)

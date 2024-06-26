@@ -2,7 +2,6 @@ package vModbus
 
 import (
 	"github.com/like595/mytools/vtcp"
-	"github.com/like595/mytools/vtools"
 )
 
 type VModbusTCP struct {
@@ -58,7 +57,6 @@ func (this *VModbusTCP) Read(funCode int, begin int, len int) int {
 	data = append(data, byte(len>>8))
 	data = append(data, byte(len))
 
-	vtools.SugarLogger.Info("发送数据：", vtools.BytesToString(data))
 	this.tcpClient.WriteData(data)
 	return ix
 }
@@ -121,7 +119,6 @@ func (this *VModbusTCP) Write(funCode int, begin int, len int, sdata *[]byte) in
 		}
 	}
 
-	vtools.SugarLogger.Info("发送数据：", vtools.BytesToString(data))
 	this.tcpClient.WriteData(data)
 	return ix
 }
