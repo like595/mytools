@@ -1,14 +1,12 @@
 package vModbus
 
 import (
-	"fmt"
 	"github.com/like595/mytools/vtcp"
 	"github.com/like595/mytools/vtools"
 )
 
 type VModbusRTU struct {
-	ip                          string
-	port                        int
+	url                         string
 	address                     int
 	modbusReceiveDataBackClient ModbusReceiveDataBackClient
 	modbusConnectBackClient     ModbusConnectBackClient
@@ -31,12 +29,9 @@ type ModbusConnectBackClient func()
 */
 type ModbusDisConnectBackClient func()
 
-/*
-*
-启动
-参数：ip，端口号，设备地址
-*/
-func (this *VModbusRTU) Start(ip string, port, address int, modbusReceiveDataBackClient ModbusReceiveDataBackClient,
+// 启动
+// url:格式，ip:port，设备地址，接收数据回调函数，连接成功回调函数，连接失败回调函数
+func (this *VModbusRTU) Start(url string, address int, modbusReceiveDataBackClient ModbusReceiveDataBackClient,
 	modbusConnectBackClient ModbusConnectBackClient, modbusDisConnectBackClient ModbusDisConnectBackClient) {
 	this.modbusReceiveDataBackClient = modbusReceiveDataBackClient
 	this.modbusDisConnectBackClient = modbusDisConnectBackClient
@@ -44,19 +39,17 @@ func (this *VModbusRTU) Start(ip string, port, address int, modbusReceiveDataBac
 	this.address = address
 
 	this.tcpClient = vtcp.MyTcpClient{}
-	this.tcpClient.ConnectTcpServer(fmt.Sprintf("%s:%d", ip, port), this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
+	this.tcpClient.ConnectTcpServer(url, this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
 
 }
 
-/*
-读取数据
-功能码，起始地址，读数据长度。
-功能码：
-1：读线圈寄存器
-2：读离散输入寄存器；
-3：读保持寄存器；
-4：读输入寄存区；
-*/
+// 读取数据
+// 功能码，起始地址，读数据长度。
+// 功能码：
+// 1：读线圈寄存器
+// 2：读离散输入寄存器；
+// 3：读保持寄存器；
+// 4：读输入寄存区；
 func (this *VModbusRTU) Read(funCode int, begin int, len int) {
 	data := make([]byte, 0)
 	data = append(data, byte(this.address))
@@ -73,15 +66,13 @@ func (this *VModbusRTU) Read(funCode int, begin int, len int) {
 	this.tcpClient.WriteData(data)
 }
 
-/*
-读取数据
-功能码，起始地址，写数据长度，数据。
-功能码：
-5：写单个线圈寄存器；
-6：写单个保持寄存器；
-15：写多个线圈寄存器；未实现
-16：写多个保持寄存器；
-*/
+// 读取数据
+// 功能码，起始地址，写数据长度，数据。
+// 功能码：
+// 5：写单个线圈寄存器；
+// 6：写单个保持寄存器；
+// 15：写多个线圈寄存器；未实现
+// 16：写多个保持寄存器；
 func (this *VModbusRTU) Write(funCode int, begin int, len int, sdata *[]byte) {
 	len = len / 2
 	data := make([]byte, 0)
