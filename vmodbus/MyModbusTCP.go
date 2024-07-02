@@ -70,7 +70,7 @@ func (this *VModbusTCP) Read(funCode int, begin int, len int) int {
 // 16：写多个保持寄存器；
 // 返回发送命令的索引
 func (this *VModbusTCP) Write(funCode int, begin int, len int, sdata *[]byte) int {
-	len = len / 2
+	len = len
 	ix := this.getIndex()
 	data := make([]byte, 0)
 	//索引

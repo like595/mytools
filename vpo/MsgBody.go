@@ -45,3 +45,13 @@ type DeviceAlarm struct {
 	//越限制
 	LimitValue string `json:"limitValue"`
 }
+
+// plc数据
+type VPLCData struct {
+	//地址
+	Address int `json:"address"`
+	//长度
+	Length int `json:"length"`
+	//数据
+	Data []byte `json:"data"`
+}
