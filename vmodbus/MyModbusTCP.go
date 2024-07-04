@@ -37,11 +37,12 @@ func (this *VModbusTCP) Start(url string, address int, modbusReceiveDataBackClie
 // 4：读输入寄存区；
 // 返回发送命令的索引
 func (this *VModbusTCP) Read(funCode int, begin int, len int) int {
-	ix := this.getIndex()
 	data := make([]byte, 0)
 	//索引
-	data = append(data, byte(ix>>8))
-	data = append(data, byte(ix))
+	//data = append(data, byte(ix>>8))
+	//data = append(data, byte(ix))
+	data = append(data, byte(begin>>8))
+	data = append(data, byte(begin))
 	//TCP
 	data = append(data, 0x00)
 	data = append(data, 0x00)
@@ -58,7 +59,7 @@ func (this *VModbusTCP) Read(funCode int, begin int, len int) int {
 	data = append(data, byte(len))
 
 	this.tcpClient.WriteData(data)
-	return ix
+	return begin
 }
 
 // 读取数据

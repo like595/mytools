@@ -25,7 +25,6 @@
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" beforeDir="false" afterPath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vpo/MsgBody.go" beforeDir="false" afterPath="$PROJECT_DIR$/vpo/MsgBody.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "F:/GoWork/GoTest",
+    "last_opened_file_path": "F:/GoWork/mytools",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
