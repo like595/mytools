@@ -44,6 +44,8 @@ type DeviceAlarm struct {
 	DeviceValue string `json:"deviceValue"`
 	//越限制
 	LimitValue string `json:"limitValue"`
+	//报警级别；1-4；1级最高，界面闪烁红灯；2：级界面闪烁黄灯；
+	AlertLevel int `json:"alertLevel"`
 }
 
 // plc数据
