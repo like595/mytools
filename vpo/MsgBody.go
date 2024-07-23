@@ -59,3 +59,13 @@ type VPLCData struct {
 	//数据
 	Data []byte `json:"data"`
 }
+
+// 线圈数据
+type VCoilData struct {
+	//数量
+	Count int
+	//地址
+	Address []int `json:"address"`
+	//数据
+	Data []int `json:"data"`
+}

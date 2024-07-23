@@ -82,10 +82,21 @@ func (this *VModbusRTU) Write(funCode int, begin int, len int, sdata *[]byte) {
 	if funCode == 5 || funCode == 6 {
 		data = append(data, (*sdata)[0])
 		data = append(data, (*sdata)[1])
-	} else if funCode == 15 || funCode == 16 {
+	} else if funCode == 16 {
 		data = append(data, byte(len>>8))
 		data = append(data, byte(len))
 		data = append(data, byte(len*2))
+		for _, b := range *sdata {
+			data = append(data, b)
+		}
+	} else if funCode == 15 {
+		data = append(data, byte(len>>8))
+		data = append(data, byte(len))
+		if len % 8 == 0	{
+			data = append(data, byte(len/8))
+		}else {
+			data = append(data, byte(len/8 + 1))
+		}
 		for _, b := range *sdata {
 			data = append(data, b)
 		}

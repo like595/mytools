@@ -4,6 +4,7 @@ import (
 	"github.com/like595/mytools/vtcp"
 )
 
+// ModbusTCP工具
 type VModbusTCP struct {
 	url                         string
 	address                     int

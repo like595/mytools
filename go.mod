@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/BurntSushi/toml v1.3.2 // indirect
 	github.com/go-sql-driver/mysql v1.7.1
+	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/streadway/amqp v1.1.0
 	go.uber.org/zap v1.19.0

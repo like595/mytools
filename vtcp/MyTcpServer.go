@@ -12,6 +12,7 @@ type ReceiveDataBack func(data []byte, len int, clientURL string)
 type ConnectBack func(clientURL string)
 type DisConnectBack func(clientURL string)
 
+// TCP服务端
 type MyTcpServer struct {
 	ip                 string
 	port               int
@@ -21,7 +22,7 @@ type MyTcpServer struct {
 	disConnectBack     DisConnectBack
 }
 
-// func (tn *DevicePo) ExplainData(byteArray []byte, len int)  {
+// 启动tcp服务端
 func (ts *MyTcpServer) StartTcpServer(ip string, port int, receiveDataBackFun ReceiveDataBack, connectBack ConnectBack, disConnectBack DisConnectBack) {
 	ts.ip = ip
 	ts.port = port
@@ -29,10 +30,11 @@ func (ts *MyTcpServer) StartTcpServer(ip string, port int, receiveDataBackFun Re
 	ts.connectBack = connectBack
 	ts.disConnectBack = disConnectBack
 	vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.", "启动tcp服务器", ts.ip, ts.port)
-	go ts.Accept()
+	go ts.accept()
 }
 
-func (ts *MyTcpServer) Accept() {
+// 接受连接
+func (ts *MyTcpServer) accept() {
 	vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.", "启动tcp服务器线程", ts.ip, ts.port)
 	address := net.TCPAddr{
 		IP:   net.ParseIP(ts.ip),
@@ -62,9 +64,7 @@ func (ts *MyTcpServer) Accept() {
 	}
 }
 
-/*
-向客户端发送数据
-*/
+// 向客户端发送数据
 func (ts *MyTcpServer) WriteData(data []byte, clientURL string) {
 	//向单个客户端发送数据
 	if clientURL != "" {
@@ -111,9 +111,7 @@ func (ts *MyTcpServer) WriteData(data []byte, clientURL string) {
 
 }
 
-/*
-接收客户端数据
-*/
+// 接收客户端数据
 func (ts *MyTcpServer) readData(conn *net.TCPConn) {
 	for true {
 		buf := make([]byte, 10*1024)

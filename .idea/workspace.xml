@@ -23,8 +23,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/WebSocketClientTest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vwebsocket/WebSocketClient.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vdbhelper/MySqlDbHelper.go" beforeDir="false" afterPath="$PROJECT_DIR$/vdbhelper/MySqlDbHelper.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vmodbus/MyModbusRTU.go" beforeDir="false" afterPath="$PROJECT_DIR$/vmodbus/MyModbusRTU.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" beforeDir="false" afterPath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpo/DevicePo.go" beforeDir="false" afterPath="$PROJECT_DIR$/vpo/DevicePo.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vpo/MsgBody.go" beforeDir="false" afterPath="$PROJECT_DIR$/vpo/MsgBody.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vstatusmanager/VStatusManager.go" beforeDir="false" afterPath="$PROJECT_DIR$/vstatusmanager/VStatusManager.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpClient.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpServer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vtools/IniUtil.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtools/IniUtil.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +47,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="Go Application" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -57,30 +70,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go Application&quot;,
-    &quot;Go Build.go build ModbusRTUTest.go.executor&quot;: &quot;Run&quot;,
-    &quot;Go Build.go build ModbusTCPTest.go.executor&quot;: &quot;Run&quot;,
-    &quot;Go Build.go build VStatusManagerTest.go.executor&quot;: &quot;Run&quot;,
-    &quot;Go Build.go build main.go.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/GoWork/mytools&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Build.go build ModbusRTUTest.go.executor": "Run",
+    "Go Build.go build ModbusTCPTest.go.executor": "Run",
+    "Go Build.go build VStatusManagerTest.go.executor": "Run",
+    "Go Build.go build WebSocketClientTest.go.executor": "Debug",
+    "Go Build.go build main.go.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "F:/GoWork/GoTest",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\GoWork\mytools\vpo" />
@@ -97,7 +111,7 @@
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VTools" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build VStatusManagerTest.go">
+  <component name="RunManager" selected="Go Build.go build WebSocketClientTest.go">
     <configuration name="go build ModbusRTUTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="mytools" />
       <working_directory value="$PROJECT_DIR$" />
@@ -125,6 +139,15 @@
       <filePath value="$PROJECT_DIR$/test/VStatusManagerTest.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build WebSocketClientTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="mytools" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="github.com/like595/mytools" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/test/WebSocketClientTest.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="mytools" />
       <working_directory value="$PROJECT_DIR$" />
@@ -136,6 +159,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build WebSocketClientTest.go" />
         <item itemvalue="Go Build.go build VStatusManagerTest.go" />
         <item itemvalue="Go Build.go build ModbusRTUTest.go" />
         <item itemvalue="Go Build.go build ModbusTCPTest.go" />

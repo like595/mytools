@@ -1,5 +1,6 @@
 package vpo
 
+// 设备信息
 type DevicePo struct {
 	Id               string //id
 	CreateBy         string //创建人

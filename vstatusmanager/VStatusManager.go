@@ -9,6 +9,7 @@ import (
 // 发送设备状态变更信息
 type SendDeviceStatusData func()
 
+// 设备状态管理
 type VStatusManager struct {
 	//设备ID
 	deviceId string

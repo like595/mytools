@@ -6,21 +6,16 @@ import (
 	"time"
 )
 
-/*
-接收数据回调函数
-*/
+// 接收数据回调函数
 type ReceiveDataBackClient func(data []byte, len int)
 
-/*
-连接成功回调函数
-*/
+// 连接成功回调函数
 type ConnectBackClient func()
 
-/*
-失去连接回调函数
-*/
+// 失去连接回调函数
 type DisConnectBackClient func()
 
+// Tcp客户端工具
 type MyTcpClient struct {
 	url                string
 	conn               net.Conn
@@ -30,9 +25,7 @@ type MyTcpClient struct {
 	zt                 bool
 }
 
-/*
-连接tcp服务端，启动函数
-*/
+// 连接tcp服务端，启动函数
 func (this *MyTcpClient) ConnectTcpServer(url string, receiveDataBackFun ReceiveDataBackClient, connectBack ConnectBackClient, disConnectBack DisConnectBackClient) {
 	this.zt = true
 	//go this.trunQuere()
@@ -49,16 +42,12 @@ func (this *MyTcpClient) ConnectTcpServer(url string, receiveDataBackFun Receive
 	go this.reconnection()
 }
 
-/*
-停止tcp
-*/
+// 停止tcp
 func (this *MyTcpClient) StopTcpServer() {
 	this.conn.Close()
 }
 
-/*
-连接服务端
-*/
+// 连接服务端
 func (this *MyTcpClient) connectToServer() bool {
 	conn, err := net.DialTimeout("tcp", this.url, time.Second)
 	if err == nil {
@@ -69,9 +58,7 @@ func (this *MyTcpClient) connectToServer() bool {
 	return false
 }
 
-/*
-向服务端发送数据
-*/
+// 向服务端发送数据
 func (this *MyTcpClient) WriteData(data []byte) bool {
 
 	for true {
@@ -104,9 +91,7 @@ func (this *MyTcpClient) WriteData(data []byte) bool {
 	}
 }
 
-/*
-接收服务端数据
-*/
+// 接收服务端数据
 func (this *MyTcpClient) readData() {
 	for true {
 		buf := make([]byte, 10*1024)
@@ -131,9 +116,7 @@ func (this *MyTcpClient) readData() {
 	}
 }
 
-/*
-重连线程
-*/
+// 重连线程
 func (this *MyTcpClient) reconnection() {
 	for true {
 		time.Sleep(time.Second)
