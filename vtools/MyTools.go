@@ -28,6 +28,11 @@ func BytesToInt16(h byte, l byte) int16 {
 	return int16(int(h)*0x100 + int(l))
 }
 
+// 有符号int转成16进制
+func IntToBytes(data int) (byte, byte) {
+	return byte(uint16(data) / 0x100), byte(uint16(data))
+}
+
 // 取byte数据的第几位
 // data：待取数据；index：数据所在索引
 func GetPoint(data byte, index int) int {

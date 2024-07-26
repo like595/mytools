@@ -23,8 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/toolsTest.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vtools/MyTools.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtools/MyTools.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go Application" />
         <option value="Go File" />
+        <option value="Go Application" />
       </list>
     </option>
   </component>
@@ -60,12 +60,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
+    "DefaultGoTemplateProperty": "Go Application",
     "Go Build.go build ModbusRTUTest.go.executor": "Run",
     "Go Build.go build ModbusTCPTest.go.executor": "Run",
     "Go Build.go build VStatusManagerTest.go.executor": "Run",
     "Go Build.go build WebSocketClientTest.go.executor": "Debug",
     "Go Build.go build main.go.executor": "Run",
+    "Go Build.go build toolsTest.go.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -99,7 +100,7 @@
       <recent name="C:\Users\Administrator\Documents\GitHub\mytools\VTools" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build WebSocketClientTest.go">
+  <component name="RunManager" selected="Go Build.go build toolsTest.go">
     <configuration name="go build ModbusRTUTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="mytools" />
       <working_directory value="$PROJECT_DIR$" />
@@ -136,22 +137,22 @@
       <filePath value="$PROJECT_DIR$/test/WebSocketClientTest.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build toolsTest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="mytools" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <package value="github.com/like595/mytools" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/main.go" />
+      <filePath value="$PROJECT_DIR$/test/toolsTest.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build toolsTest.go" />
         <item itemvalue="Go Build.go build WebSocketClientTest.go" />
         <item itemvalue="Go Build.go build VStatusManagerTest.go" />
         <item itemvalue="Go Build.go build ModbusRTUTest.go" />
         <item itemvalue="Go Build.go build ModbusTCPTest.go" />
-        <item itemvalue="Go Build.go build main.go" />
       </list>
     </recent_temporary>
   </component>
