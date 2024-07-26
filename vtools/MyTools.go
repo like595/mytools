@@ -23,6 +23,18 @@ func CalculateCRC16(data []byte) []byte {
 	return res
 }
 
+// 16位16进制，转成有符号int
+func BytesToInt16(h byte, l byte) int16 {
+	return int16(int(h)*0x100 + int(l))
+}
+
+// 取byte数据的第几位
+// data：待取数据；index：数据所在索引
+func GetPoint(data byte, index int) int {
+	data = data >> index
+	return int(data) & 1
+}
+
 func BytesToString(byteArray []byte) string {
 	res := ""
 	for _, b := range byteArray {

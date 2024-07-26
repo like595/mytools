@@ -23,21 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab9b5b5-cca5-4fd3-a2f2-926fe6abe514" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/WebSocketClientTest.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vwebsocket/WebSocketClient.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vdbhelper/MySqlDbHelper.go" beforeDir="false" afterPath="$PROJECT_DIR$/vdbhelper/MySqlDbHelper.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vmodbus/MyModbusRTU.go" beforeDir="false" afterPath="$PROJECT_DIR$/vmodbus/MyModbusRTU.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" beforeDir="false" afterPath="$PROJECT_DIR$/vmodbus/MyModbusTCP.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vpo/DevicePo.go" beforeDir="false" afterPath="$PROJECT_DIR$/vpo/DevicePo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vpo/MsgBody.go" beforeDir="false" afterPath="$PROJECT_DIR$/vpo/MsgBody.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vstatusmanager/VStatusManager.go" beforeDir="false" afterPath="$PROJECT_DIR$/vstatusmanager/VStatusManager.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpClient.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpClient.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vtcp/MyTcpServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtcp/MyTcpServer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vtools/IniUtil.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtools/IniUtil.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vtools/MyTools.go" beforeDir="false" afterPath="$PROJECT_DIR$/vtools/MyTools.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +76,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "F:/GoWork/GoTest",
+    "last_opened_file_path": "F:/GoWork/mytools",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
