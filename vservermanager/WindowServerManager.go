@@ -1,4 +1,4 @@
-package ServerManager
+package vServerManager
 
 import (
 	"fmt"
@@ -12,32 +12,32 @@ import (
 
 /*
 读取windows服务状态；1：启动；2：停止；0：错误；
- */
-func getWindowsServerStatus(serverName string) int{
+*/
+func getWindowsServerStatus(serverName string) int {
 	m, err := mgr.Connect()
 	if err != nil {
-		vtools.SugarLogger.Error(fmt.Sprintf("连接【%s】失败，错误: %v\n",serverName, err))
+		vtools.SugarLogger.Error(fmt.Sprintf("连接【%s】失败，错误: %v\n", serverName, err))
 		return 0
 	}
 	defer m.Disconnect()
 
 	s, err := m.OpenService(serverName) // 替换为你的服务名
 	if err != nil {
-		vtools.SugarLogger.Error(fmt.Sprintf("启动【%s】失败，错误: %v\n",serverName, err))
+		vtools.SugarLogger.Error(fmt.Sprintf("启动【%s】失败，错误: %v\n", serverName, err))
 		return 0
 	}
 	defer s.Close()
 
 	status, err := s.Query()
 	if err != nil {
-		vtools.SugarLogger.Error(fmt.Sprintf("打开服务【%s】失败: %v\n",serverName, err))
+		vtools.SugarLogger.Error(fmt.Sprintf("打开服务【%s】失败: %v\n", serverName, err))
 		return 0
 	}
 	zt := 0
 	//停止
-	if status.State == 1{
+	if status.State == 1 {
 		zt = 2
-	}else if status.State == 4{
+	} else if status.State == 4 {
 		//正在运行
 		zt = 1
 	}
@@ -46,16 +46,14 @@ func getWindowsServerStatus(serverName string) int{
 
 /*
 控制Windows服务 1：启动；2：停止；3：重启；
- */
-func setWindowsServerStatus(serverName string,status int) {
+*/
+func setWindowsServerStatus(serverName string, status int) {
 	m, err := mgr.Connect()
 	if err != nil {
 		vtools.SugarLogger.Error("Failed to connect to service control manager: %v\n", err)
 		return
 	}
 	defer m.Disconnect()
-
-
 
 	s, err := m.OpenService(serverName)
 	if err != nil {
@@ -64,7 +62,7 @@ func setWindowsServerStatus(serverName string,status int) {
 	}
 	defer s.Close()
 
-	if status == 1{
+	if status == 1 {
 		//启动
 		// 启动服务
 		if err := s.Start(); err != nil {
@@ -72,7 +70,7 @@ func setWindowsServerStatus(serverName string,status int) {
 		} else {
 			vtools.SugarLogger.Error("Service %s started successfully.\n", serverName)
 		}
-	}else if status == 2{
+	} else if status == 2 {
 		//停止
 		_, err = s.Control(windows.SERVICE_CONTROL_STOP)
 		if err != nil {
@@ -80,7 +78,7 @@ func setWindowsServerStatus(serverName string,status int) {
 		} else {
 			vtools.SugarLogger.Error("Service %s stop successfully.\n", serverName)
 		}
-	}else if status == 3{
+	} else if status == 3 {
 		//重启
 		//停止
 		_, err = s.Control(windows.SERVICE_CONTROL_STOP)
@@ -102,7 +100,7 @@ func setWindowsServerStatus(serverName string,status int) {
 /*
 重启计算机
 */
-func restartComputerWindows()  error {
+func restartComputerWindows() error {
 	// 构建shutdown命令，使用-r参数表示重启，-t参数表示在多少秒之后执行，这里设置为0表示立即执行
 	cmd := exec.Command("shutdown", "-r", "-t", "0")
 
@@ -118,4 +116,3 @@ func restartComputerWindows()  error {
 	fmt.Println("System is restarting...")
 	return nil
 }
-

@@ -81,8 +81,10 @@ func (this *MyTcpClient) WriteData(data []byte) bool {
 		this.zt = true
 		return true
 	} else {
-		this.conn.Close()
-		this.conn = nil
+		if this.conn != nil {
+			this.conn.Close()
+			this.conn = nil
+		}
 
 		this.disConnectBack()
 		//this.connectToServer()
