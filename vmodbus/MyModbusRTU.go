@@ -39,7 +39,7 @@ func (this *VModbusRTU) Start(url string, address int, modbusReceiveDataBackClie
 	this.address = address
 
 	this.tcpClient = vtcp.MyTcpClient{}
-	this.tcpClient.ConnectTcpServer(url, this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
+	go this.tcpClient.ConnectTcpServer(url, this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
 
 }
 
@@ -92,10 +92,10 @@ func (this *VModbusRTU) Write(funCode int, begin int, len int, sdata *[]byte) {
 	} else if funCode == 15 {
 		data = append(data, byte(len>>8))
 		data = append(data, byte(len))
-		if len % 8 == 0	{
+		if len%8 == 0 {
 			data = append(data, byte(len/8))
-		}else {
-			data = append(data, byte(len/8 + 1))
+		} else {
+			data = append(data, byte(len/8+1))
 		}
 		for _, b := range *sdata {
 			data = append(data, b)

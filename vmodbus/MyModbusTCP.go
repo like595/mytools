@@ -25,7 +25,7 @@ func (this *VModbusTCP) Start(url string, address int, modbusReceiveDataBackClie
 	this.address = address
 
 	this.tcpClient = vtcp.MyTcpClient{}
-	this.tcpClient.ConnectTcpServer(url, this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
+	go this.tcpClient.ConnectTcpServer(url, this.receiveDataBackClient, this.connectBackClient, this.disConnectBackClient)
 
 }
 
