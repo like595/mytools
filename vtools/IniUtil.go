@@ -16,6 +16,11 @@ type IniUtil struct {
 // 初始化
 // filePath文件路径
 func (this *IniUtil) Init(filePath string) {
+	if FileExists("../."+filePath) {
+		filePath = "../." + filePath
+	}else if FileExists("."+filePath) {
+		filePath = "." + filePath
+	}
 	file, e := ini.Load(filePath)
 	if e != nil {
 		SugarLogger.Info("Fail to load ", filePath, e.Error())

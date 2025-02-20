@@ -1,5 +1,9 @@
 package vtools
 
+import (
+	"os"
+)
+
 // calculateCRC16 计算Modbus RTU的CRC校验
 func CalculateCRC16(data []byte) []byte {
 	// 初始CRC值
@@ -58,4 +62,16 @@ func BytesToString(byteArray []byte) string {
 		res += " "
 	}
 	return res
+}
+
+func FileExists(filename string) bool {
+	_, err := os.Stat(filename)
+	if err == nil {
+		return true
+	}
+	if os.IsNotExist(err) {
+		return false
+	}
+	// 处理其他可能的错误
+	return false
 }
