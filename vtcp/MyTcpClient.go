@@ -54,6 +54,11 @@ func (this *MyTcpClient) connectToServer() bool {
 		this.conn = conn
 		this.connectBack()
 		return true
+	} else {
+		//连接失败，调用连接断开回调
+		time.Sleep(time.Second * 5)
+		this.disConnectBack()
+		return false
 	}
 	return false
 }
