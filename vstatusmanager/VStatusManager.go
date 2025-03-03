@@ -26,9 +26,9 @@ func (this *VStatusManager) Start(deviceId string, deviceStatus *vpo.DeviceStatu
 	this.deviceId = deviceId
 	this.deviceStatus = deviceStatus
 	//故障设备，更新成离线，重新检测状态
-	if this.deviceStatus.Status == 2{
-		this.deviceStatus.Status = 4
-	}
+	//if this.deviceStatus.Status == 2{
+	//	this.deviceStatus.Status = 4
+	//}
 
 	this.sendDeviceStatusData = sendDeviceStatusData
 }
