@@ -75,3 +75,45 @@ func FileExists(filename string) bool {
 	// 处理其他可能的错误
 	return false
 }
+
+// 判断数据是否改变，如果改变则拷贝数据到lastData。如果数据没有改变，则不拷贝。适用于Modbus协议等最后两位是校验位的数据
+func IsDataChangeModbusRTU(plcData, lastData *[]byte) bool {
+	isChange := false
+	lenth := len((*plcData))
+	if lenth != len((*lastData)) {
+		return false
+	}
+	if (*plcData)[lenth-1] == (*lastData)[lenth-1] && (*plcData)[lenth-2] == (*lastData)[lenth-2] {
+		return false
+	}
+	for i := 0; i < len((*plcData)) && i < len((*lastData)); i++ {
+		if (*plcData)[i] != (*lastData)[i] {
+			isChange = true
+		}
+	}
+	//数据改变，拷贝数据
+	if isChange {
+		for i := 0; i < len((*plcData)) && i < len((*lastData)); i++ {
+			(*lastData)[i] = (*plcData)[i]
+		}
+	}
+	return isChange
+}
+
+// 判断数据是否改变，如果改变则拷贝数据到lastData。如果数据没有改变，则不拷贝。适用于Modbus协议等最后两位是校验位的数据
+func IsDataChange(plcData, lastData *[]byte) bool {
+	isChange := false
+
+	for i := 0; i < len((*plcData)) && i < len((*lastData)); i++ {
+		if (*plcData)[i] != (*lastData)[i] {
+			isChange = true
+		}
+	}
+	//数据改变，拷贝数据
+	if isChange {
+		for i := 0; i < len((*plcData)) && i < len((*lastData)); i++ {
+			(*lastData)[i] = (*plcData)[i]
+		}
+	}
+	return isChange
+}
