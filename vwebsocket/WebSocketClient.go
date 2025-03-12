@@ -7,20 +7,30 @@ import (
 )
 
 type VWebSocketClient struct {
-	url                  string
-	webSocketReceiveData WebSocketReceiveData
-	conn                 *websocket.Conn
+	url                     string
+	webSocketReceiveData    WebSocketReceiveData
+	webSocketConnectBack    WebSocketConnectBack
+	webSocketDisConnectBack WebSocketDisConnectBack
+	conn                    *websocket.Conn
 }
 
 // 接收数据回调函数
 type WebSocketReceiveData func(messageType int, data *[]byte)
 
+// 连接成功回调函数
+type WebSocketConnectBack func()
+
+// 失去连接回调函数
+type WebSocketDisConnectBack func()
+
 // 启动
 // url：WebSocket服务端地址
 // webSocketReceiveData：接收到数据回调函数
-func (this *VWebSocketClient) Start(url string, webSocketReceiveData WebSocketReceiveData) {
+func (this *VWebSocketClient) Start(url string, webSocketReceiveData WebSocketReceiveData, webSocketConnectBack WebSocketConnectBack, webSocketDisConnectBack WebSocketDisConnectBack) {
 	this.url = url
 	this.webSocketReceiveData = webSocketReceiveData
+	this.webSocketConnectBack = webSocketConnectBack
+	this.webSocketDisConnectBack = webSocketDisConnectBack
 	go this.connect()
 }
 
@@ -35,6 +45,7 @@ func (this *VWebSocketClient) connect() {
 		} else {
 			vtools.SugarLogger.Error("连接WebSocket成功。url=", this.url)
 			this.conn = c
+			this.webSocketConnectBack()
 			go this.receive()
 			break
 		}
@@ -64,6 +75,7 @@ func (this *VWebSocketClient) receive() {
 		messageType, message, err := this.conn.ReadMessage()
 		if err != nil {
 			vtools.SugarLogger.Info("WebSocketClient接收消息错误：", err)
+			this.webSocketDisConnectBack()
 			go this.connect()
 			break
 		}
