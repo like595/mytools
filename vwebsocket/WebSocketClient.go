@@ -12,6 +12,7 @@ type VWebSocketClient struct {
 	webSocketConnectBack    WebSocketConnectBack
 	webSocketDisConnectBack WebSocketDisConnectBack
 	conn                    *websocket.Conn
+	status 	int	//鏈接狀態；1：已連接；0：未連接；
 }
 
 // 接收数据回调函数
@@ -36,15 +37,21 @@ func (this *VWebSocketClient) Start(url string, webSocketReceiveData WebSocketRe
 
 func (this *VWebSocketClient) connect() {
 	for true {
+		//func NewClient(netConn net.Conn, u *url.URL, requestHeader http.Header, readBufSize, writeBufSize int) (c *Conn, response *http.Response, err error) {
+		//Dial(urlStr string, requestHeader http.Header) (*Conn, *http.Response, error)
 		// 连接到WebSocket服务器
+		websocket.DefaultDialer.ReadBufferSize = 1024*10
 		c, _, err := websocket.DefaultDialer.Dial(this.url, nil)
 		if err != nil {
 			vtools.SugarLogger.Error("连接WebSocket失败。url=", this.url)
+			this.status = 0
 			time.Sleep(time.Second)
+			this.webSocketDisConnectBack()
 			continue
 		} else {
 			vtools.SugarLogger.Error("连接WebSocket成功。url=", this.url)
 			this.conn = c
+			this.status = 1
 			this.webSocketConnectBack()
 			go this.receive()
 			break
@@ -59,13 +66,16 @@ func (this *VWebSocketClient) Stop() {
 
 // 发送WebSocket消息
 func (this *VWebSocketClient) SendData(data *[]byte) bool {
-	// 发送消息
-	err := this.conn.WriteMessage(websocket.TextMessage, *data)
-	if err != nil {
-		return false
-	} else {
-		return true
+	if this.status == 1{
+		// 发送消息
+		err := this.conn.WriteMessage(websocket.TextMessage, *data)
+		if err != nil {
+			return false
+		} else {
+			return true
+		}
 	}
+	return false
 }
 
 // 接收消息
@@ -75,6 +85,7 @@ func (this *VWebSocketClient) receive() {
 		messageType, message, err := this.conn.ReadMessage()
 		if err != nil {
 			vtools.SugarLogger.Info("WebSocketClient接收消息错误：", err)
+			this.status = 0
 			this.webSocketDisConnectBack()
 			go this.connect()
 			break

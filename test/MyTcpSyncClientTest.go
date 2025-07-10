@@ -40,9 +40,10 @@ func helloWord() {
 	index := 0
 	for {
 		index++
-		data, err := syncClient.SendAndReceive([]byte(fmt.Sprintf("你好，世界 %d", index)))
-		fmt.Println("Receive:", string(data), "****", err)
-		time.Sleep(time.Second)
+		fmt.Println("helloWord   ***   Send:")
+		data, err := syncClient.SendAndReceive([]byte(fmt.Sprintf("hello world %d", index)))
+		fmt.Println("helloWord   ***   Receive:", string(data), "****", err)
+		time.Sleep(time.Second * 30)
 	}
 }
 
@@ -50,8 +51,9 @@ func fuck() {
 	index := 0
 	for {
 		index++
+		fmt.Println("fuck   ***   Send:")
 		data, err := syncClient.SendAndReceive([]byte(fmt.Sprintf("fuck %d", index)))
-		fmt.Println("Receive:", string(data), "****", err)
+		fmt.Println("fuck   ***   Receive:", string(data), "****", err)
 		time.Sleep(time.Second)
 	}
 }
