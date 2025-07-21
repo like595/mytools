@@ -8,20 +8,20 @@ import (
 )
 
 type MyRabbitMQ struct {
-	url string
+	url              string
 	channel          *amqp.Channel
 	listenerFunction ListenerFunction
 }
 
 /*
 监听函数
- */
+*/
 type ListenerFunction func()
 
 /*
 初始化Rabbitmq
- */
-func (this *MyRabbitMQ)  Init(rabbitURL string) (bool) {
+*/
+func (this *MyRabbitMQ) Init(rabbitURL string) bool {
 	this.url = rabbitURL
 	return this.connection()
 }
@@ -29,17 +29,17 @@ func (this *MyRabbitMQ)  Init(rabbitURL string) (bool) {
 /*
 连接 Rabbitmq
 */
-func (this *MyRabbitMQ)  connection() (bool) {
+func (this *MyRabbitMQ) connection() bool {
 	conn, err := amqp.Dial(this.url)
 
 	if err != nil {
-		vtools.SugarLogger.Error("初始化Rabbitmq失败，错误：",err)
+		vtools.SugarLogger.Error("初始化Rabbitmq失败，错误：", err)
 		return false
 	}
 
 	ch, err := conn.Channel()
 	if err != nil {
-		vtools.SugarLogger.Error("初始化Rabbitmq失败，错误：",err)
+		vtools.SugarLogger.Error("初始化Rabbitmq失败，错误：", err)
 		return false
 	}
 	this.channel = ch
@@ -49,16 +49,15 @@ func (this *MyRabbitMQ)  connection() (bool) {
 
 /*
 设置监听
- */
-func (this *MyRabbitMQ)  SetListener(listenerFunction ListenerFunction){
+*/
+func (this *MyRabbitMQ) SetListener(listenerFunction ListenerFunction) {
 	this.listenerFunction = listenerFunction
 }
 
-
 /*
 发送消息
- */
-func (this *MyRabbitMQ) Publish(exchange,routingKey string, data *[]byte) error {
+*/
+func (this *MyRabbitMQ) Publish(exchange, routingKey string, data *[]byte) error {
 
 	// 检查交换机是否存在，如果不存在则创建交换机
 
@@ -75,10 +74,10 @@ func (this *MyRabbitMQ) Publish(exchange,routingKey string, data *[]byte) error 
 			Body:         *data,
 			DeliveryMode: amqp.Persistent,
 		})
-	if err != nil{
+	if err != nil {
 		time.Sleep(time.Minute)
 		this.connection()
-		this.Publish(exchange,routingKey,data)
+		this.Publish(exchange, routingKey, data)
 		this.listenerFunction()
 	}
 	return err
@@ -96,7 +95,7 @@ queueName：队列名称
 routingKey：key名称
 handler：接收到消息回调函数
 concurrency：并发
- */
+*/
 func (this *MyRabbitMQ) StartConsumer(
 	exchangeName,
 	queueName,
@@ -105,19 +104,18 @@ func (this *MyRabbitMQ) StartConsumer(
 	concurrency int) error {
 
 	paramArgs := make(map[string]interface{})
-	paramArgs["x-message-ttl"] = 1000
+	paramArgs["x-message-ttl"] = 5000
 
 	//创建队列
 	_, err := this.channel.QueueDeclare(queueName,
-		false, // 是否持久化
-		true, // 是否自动删除(前提是至少有一个消费者连接到这个队列，之后所有与这个队列连接的消费者都断开时，才会自动删除。注意：生产者客户端创建这个队列，或者没有消费者客户端与这个队列连接时，都不会自动删除这个队列)
-		false,  // 是否为排他队列（排他的队列仅对“首次”声明的conn可见[一个conn中的其他channel也能访问该队列]，conn结束后队列删除）
-		false,  // 是否阻塞
-		paramArgs)	//自定义参数
+		false,     // 是否持久化
+		true,      // 是否自动删除(前提是至少有一个消费者连接到这个队列，之后所有与这个队列连接的消费者都断开时，才会自动删除。注意：生产者客户端创建这个队列，或者没有消费者客户端与这个队列连接时，都不会自动删除这个队列)
+		false,     // 是否为排他队列（排他的队列仅对“首次”声明的conn可见[一个conn中的其他channel也能访问该队列]，conn结束后队列删除）
+		false,     // 是否阻塞
+		paramArgs) //自定义参数
 	if err != nil {
 		return err
 	}
-
 
 	//绑定队列、交换机、key
 	err = this.channel.QueueBind(queueName, routingKey, exchangeName, false, nil)
@@ -208,5 +206,3 @@ func (this *MyRabbitMQ) StartConsumer(
 //	url := fmt.Sprintf("amqp://%s:%s@%s:%s", username, password, ip, port)
 //	return url
 //}
-
-
