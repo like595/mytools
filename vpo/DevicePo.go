@@ -29,7 +29,8 @@ type DevicePo struct {
 	DeviceData9      string //参数9
 	DeviceData10     string //参数10
 	InstallDate      string //安装日期
-	DeviceStatus     int    //设备状态
+	//设备状态 1-正常；2-故障；3-告警；4-离线；
+	DeviceStatus     int
 	DeviceStatsuTime string //设备状态更新时间
 	ServerId         string //所在服务器
 	Name             string //设备名称

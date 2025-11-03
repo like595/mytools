@@ -2,6 +2,7 @@ package vModbus
 
 import (
 	"github.com/like595/mytools/vtcp"
+	"github.com/like595/mytools/vtools"
 )
 
 // ModbusTCP工具
@@ -60,6 +61,7 @@ func (this *VModbusTCP) Read(funCode int, begin int, len int) int {
 	data = append(data, byte(len))
 
 	this.tcpClient.WriteData(data)
+	//vtools.SugarLogger.Info("查询命令："+vtools.BytesToString(data))
 	return begin
 }
 
@@ -120,7 +122,7 @@ func (this *VModbusTCP) Write(funCode int, begin int, len int, sdata *[]byte) in
 			data = append(data, b)
 		}
 	}
-
+	vtools.SugarLogger.Info("写入控制命令：",vtools.BytesToString(data))
 	this.tcpClient.WriteData(data)
 	return ix
 }

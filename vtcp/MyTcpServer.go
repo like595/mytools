@@ -86,28 +86,30 @@ func (ts *MyTcpServer) WriteData(data []byte, clientURL string) {
 				}
 			}
 		}
+	}else {
+		//向全部客户端发送数据
+		ts.clientMap.Range(func(key, value interface{}) bool {
+			conn := (value).(net.Conn)
+			clientURL := (key).(string)
+			_, err := conn.Write(data)
+			if err != nil {
+				vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.", "发送失败1：", err)
+				log.Println(err)
+				conn.Close()
+				//失去连接回调
+				if ts.disConnectBack != nil {
+					ts.disConnectBack(clientURL)
+				}
+				//删除该元素
+				ts.clientMap.Delete(clientURL)
+			} else {
+				//vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.","发送成功")
+			}
+			return true
+		})
 	}
 
-	//向全部客户端发送数据
-	ts.clientMap.Range(func(key, value interface{}) bool {
-		conn := (value).(net.Conn)
-		clientURL := (key).(string)
-		_, err := conn.Write(data)
-		if err != nil {
-			vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.", "发送失败1：", err)
-			log.Println(err)
-			conn.Close()
-			//失去连接回调
-			if ts.disConnectBack != nil {
-				ts.disConnectBack(clientURL)
-			}
-			//删除该元素
-			ts.clientMap.Delete(clientURL)
-		} else {
-			//vtools.SugarLogger.Info("DaoCha.DaoCha_TuoDa.","发送成功")
-		}
-		return true
-	})
+
 
 }
 
