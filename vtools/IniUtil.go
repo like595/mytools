@@ -16,9 +16,9 @@ type IniUtil struct {
 // 初始化
 // filePath文件路径
 func (this *IniUtil) Init(filePath string) {
-	if FileExists("../."+filePath) {
+	if FileExists("../." + filePath) {
 		filePath = "../." + filePath
-	}else if FileExists("."+filePath) {
+	} else if FileExists("." + filePath) {
 		filePath = "." + filePath
 	}
 	file, e := ini.Load(filePath)
@@ -107,4 +107,28 @@ func (this *IniUtil) GetFloat(sectionName string, key string) float64 {
 		SugarLogger.Error(e)
 	}
 	return value
+}
+
+// Crc16Ccitt 计算CRC-16/CCITT校验值（大端序）
+func Crc16Ccitt(data []byte) []byte {
+	poly := uint16(0x1021) // 多项式
+	crc := uint16(0x0000)  // 初始值
+
+	for _, b := range data {
+		crc ^= uint16(b) << 8
+		for i := 0; i < 8; i++ {
+			if crc&0x8000 != 0 {
+				crc = (crc << 1) ^ poly
+			} else {
+				crc <<= 1
+			}
+			crc &= 0xFFFF // 保持16位长度
+		}
+	}
+
+	// 返回大端序字节数组
+	//return []byte{
+	//	byte(crc >> 8),byte(crc & 0xFF)
+	//}
+	return []byte{byte(crc >> 8), byte(crc & 0xFF)}
 }
