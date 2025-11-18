@@ -12,6 +12,8 @@ type MainBody struct {
 	DeviceCode string `json:"deviceCode"`
 	//数据
 	Data interface{} `json:"data"`
+	//地点ID
+	SiteId string `json:"siteId"`
 }
 
 // 消息体-设备状态
