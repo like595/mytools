@@ -72,3 +72,7 @@ func (this *VStatusManager) SetDeviceStatus(status int) {
 	//sprintf := fmt.Sprintf("要更新成%d。原始是%d，更新后是%d。", status, ys, this.deviceStatus.Status)
 	//fmt.Println(sprintf, "***", isChange)
 }
+
+func (this *VStatusManager) GetStatus() int {
+	return this.deviceStatus.Status
+}
