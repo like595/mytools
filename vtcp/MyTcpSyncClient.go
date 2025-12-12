@@ -86,3 +86,8 @@ func (this *MyTcpSyncClient) SendAndReceive(data []byte) ([]byte, error) {
 	}
 	return buf[:len], nil
 }
+
+// 重新连接服务端
+func (this *MyTcpSyncClient) ReConectToServer() {
+	this.connectToServer()
+}
