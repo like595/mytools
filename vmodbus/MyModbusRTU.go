@@ -109,6 +109,75 @@ func (this *VModbusRTU) Write(funCode int, begin int, len int, sdata *[]byte) {
 	this.tcpClient.WriteData(data)
 }
 
+
+
+// 读取指定从站地址的数据
+// 功能码，起始地址，读数据长度。
+// 功能码：
+// 1：读线圈寄存器
+// 2：读离散输入寄存器；
+// 3：读保持寄存器；
+// 4：读输入寄存区；
+func (this *VModbusRTU) ReadByAddr(address int,funCode int, begin int, len int) {
+	data := make([]byte, 0)
+	data = append(data, byte(address))
+	data = append(data, byte(funCode))
+	data = append(data, byte(begin>>8))
+	data = append(data, byte(begin))
+	data = append(data, byte(len>>8))
+	data = append(data, byte(len))
+	crc := vtools.CalculateCRC16(data)
+	data = append(data, crc[0])
+	data = append(data, crc[1])
+
+	this.tcpClient.WriteData(data)
+}
+
+
+// 向指定的从站地址写数据
+// 功能码，起始地址，写数据长度，数据。
+// 功能码：
+// 5：写单个线圈寄存器；
+// 6：写单个保持寄存器；
+// 15：写多个线圈寄存器；未实现
+// 16：写多个保持寄存器；
+func (this *VModbusRTU) WriteByAddr(address int,funCode int, begin int, len int, sdata *[]byte) {
+	len = len / 2
+	data := make([]byte, 0)
+	data = append(data, byte(address))
+	data = append(data, byte(funCode))
+	data = append(data, byte(begin>>8))
+	data = append(data, byte(begin))
+	if funCode == 5 || funCode == 6 {
+		data = append(data, (*sdata)[0])
+		data = append(data, (*sdata)[1])
+	} else if funCode == 16 {
+		data = append(data, byte(len>>8))
+		data = append(data, byte(len))
+		data = append(data, byte(len*2))
+		for _, b := range *sdata {
+			data = append(data, b)
+		}
+	} else if funCode == 15 {
+		data = append(data, byte(len>>8))
+		data = append(data, byte(len))
+		if len%8 == 0 {
+			data = append(data, byte(len/8))
+		} else {
+			data = append(data, byte(len/8+1))
+		}
+		for _, b := range *sdata {
+			data = append(data, b)
+		}
+	}
+
+	crc := vtools.CalculateCRC16(data)
+	data = append(data, crc[0])
+	data = append(data, crc[1])
+
+	this.tcpClient.WriteData(data)
+}
+
 /*
 接收数据回调函数
 */
